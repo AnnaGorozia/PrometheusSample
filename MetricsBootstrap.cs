@@ -13,6 +13,7 @@ namespace PrometheusSample
             LocalTimeMetrics.Register(registry);
 
             DotNetRuntimeStatsBuilder.Customize()
+                // CaptureLevel.Verbose causes runtime exception, whereas CaptureLevel.Informational does not
                 .WithGcStats(CaptureLevel.Verbose, Histogram.PowersOfTenDividedBuckets(-3, 1, 4))
                 .WithContentionStats(CaptureLevel.Informational)
                 .WithThreadPoolStats(CaptureLevel.Informational)
